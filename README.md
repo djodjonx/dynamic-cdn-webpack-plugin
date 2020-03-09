@@ -63,7 +63,7 @@ This is only an example for commons use cases, please refer to the __server / pr
 ```xml
 <Location "/">
     AddOutputFilterByType SUBSTITUTE text/html
-    Substitute "s|<head>|<head><script type="text/javascript">window.__webpack_public_path__ = "https://my-awesome-cdn.com"</script>|i"
+    Substitute "s|<head>|expr=<head><script type="text/javascript">window.__webpack_public_path__ = "${YOUR_URL_FROM_ENV_VAR}"</script>|i"
 </Location>
 ```
 
