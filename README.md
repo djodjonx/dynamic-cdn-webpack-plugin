@@ -50,7 +50,7 @@ plugins: [
 ]
 ```
 
-The plugin take a option variableName => String__. If you don't add this option, it's `__webpack_public_path__` by default.
+The plugin take a option variableName => __String__. If you don't add this option, it's `__webpack_public_path__` by default.
 
 All variables are bind to __window__
 
