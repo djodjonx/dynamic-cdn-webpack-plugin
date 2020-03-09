@@ -1,0 +1,31 @@
+{
+  "name": "dynamic-cdn-webpack-plugin",
+  "version": "1.0.0",
+  "description": "Plugin for rewrite, at runtime, webpack assets url for loading application from CDN dynamicaly",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djodjonx/dynamic-cdn-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "pluging",
+    "dynamic-cdn",
+    "html-webpack-plugin"
+  ],
+  "author": "Jonathan Moutier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djodjonx/dynamique-cdn-webapck-plugin/issues"
+  },
+  "homepage": "https://github.com/djodjonx/dynamique-cdn-webapck-plugin#readme",
+  "dependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.42.0"
+  }
+}
