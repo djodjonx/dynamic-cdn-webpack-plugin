@@ -1,11 +1,11 @@
-# dynamique-cdn-webapck-plugin
+# webapck-dynamique-cdn-plugin
 <div align="center">
   <a href="https://github.com/webpack/webpack">
     <img width="200" height="200"
       src="https://webpack.js.org/assets/icon-square-big.svg">
   </a>
 
-  <h1>Dynamic CDN Webpack Plugin</h1>
+  <h1>Webpack Dynamic CDN Plugin</h1>
   <div align="center">
     <h3>Build Once, run it everywhere.</h3>
   </div>
@@ -14,11 +14,11 @@
 <h2 align="center">Install</h2>
 
 ```bash
-  npm i --save-dev dynamic-cdn-webpack-plugin
+  npm i --save-dev webpack-dynamic-cdn-plugin
 ```
 
 ```bash
-  yarn add --dev dynamic-cdn-webpack-plugin
+  yarn add --dev webpack-dynamic-cdn-plugin
 ```
 
 
@@ -38,7 +38,7 @@ you only need to inject into your index.html from your server, a global variable
 Require the plugin in your webpack config:
 
 ```javascript
-const DynamicCdnWebpackPlugin = require('dynamic-cdn-webpack-plugin');
+const WebpackDynamicCdnPlugin = require('webpack-dynamic-cdn-plugin');
 ```
 
 Add the plugin to your webpack config as follows:
@@ -46,7 +46,7 @@ Add the plugin to your webpack config as follows:
 ```javascript
 plugins: [
     new HtmlWebpackPlugin(),
-    new DynamicCdnWebpackPlugin('my_awesome_var')
+    new WebpackDynamicCdnPlugin('my_awesome_var')
 ]
 ```
 
@@ -83,4 +83,4 @@ You're free to contribute to this project by submitting issues and/or pull reque
 
 ## License
 
-This project is licensed under [MIT](https://github.com/djodjonx/dynamic-cdn-webpack-plugin/blob/master/LICENSE).
+This project is licensed under [MIT](https://github.com/djodjonx/webpack-dynamic-cdn-plugin/blob/master/LICENSE).

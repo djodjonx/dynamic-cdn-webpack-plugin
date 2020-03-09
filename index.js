@@ -1,7 +1,7 @@
 /* eslint-disable */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-class DynamicCdnWebpackPlugin {
+class WebpackDynamicCdnPlugin {
 
   constructor(windowVar) {
     this.windowVar = windowVar || '__webpack_public_path__'
@@ -132,4 +132,4 @@ class DynamicCdnWebpackPlugin {
   }
 }
 
-module.exports = DynamicCdnWebpackPlugin
+module.exports = WebpackDynamicCdnPlugin
