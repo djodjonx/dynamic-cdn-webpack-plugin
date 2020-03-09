@@ -71,7 +71,7 @@ This is only an example for commons use cases, please refer to the __server / pr
 
 ```bash
 location / {
-    sub_filter '<head>'  '<head><script type="text/javascript">window.__webpack_public_path__ = "https://my-awesome-cdn.com"</script>';
+    sub_filter '<head>'  '<head><script type="text/javascript">window.__webpack_public_path__ = "$YOUR_URL_FROM_ENV_VAR"</script>';
     sub_filter_once on;
 }
 ```
