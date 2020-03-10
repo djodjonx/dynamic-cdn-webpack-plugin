@@ -42,13 +42,14 @@ class WebpackDynamicCdnPlugin {
 
     const renderHeadFunction =`
     (function() {
+      var publicPath = window.${this.windowVar} || '';
       /** set webpack public path */
-      __webpack_public_path__ = window.${this.windowVar};
+      __webpack_public_path__ = publicPath;
       var tags = [${tags}];
       var headTag = document.head;
       tags.forEach((tag) => {
         var link = document.createElement('link');
-        link.href = window.${this.windowVar} + tag.href;
+        link.href = publicPath + tag.href;
         if (tag.rel) {
           link.rel = tag.rel;
         }
@@ -59,7 +60,7 @@ class WebpackDynamicCdnPlugin {
       })
     })(window, document);
     `
-    return renderHeadFunction
+    return renderHeadFunction;
   }
 
   generateBodyTag (tagArray) {
@@ -72,6 +73,7 @@ class WebpackDynamicCdnPlugin {
 
     const renderBodyFunction =`
     (function() {
+      var publicPath = window.${this.windowVar} || '';
       var tags = [${tags}];
       var bodyTag = document.body;
       tags.forEach((tag) => {
@@ -81,7 +83,7 @@ class WebpackDynamicCdnPlugin {
       })
     })(window, document);
     `
-    return renderBodyFunction
+    return renderBodyFunction;
   }
 
   processingAlterTags (data, cb) {
