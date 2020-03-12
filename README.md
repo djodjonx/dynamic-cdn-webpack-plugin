@@ -38,6 +38,7 @@ you only need to inject into your index.html from your server, a global variable
 Require the plugin in your webpack config:
 
 ```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackDynamicCdnPlugin = require('webpack-dynamic-cdn-plugin');
 ```
 
@@ -51,6 +52,10 @@ plugins: [
 ```
 
 The plugin take a option variableName => __String__. If you don't add this option, it's `__webpack_public_path__` by default.
+
+The option should look like "https://some-url-of-CDN.com/" and always finish by "/".
+
+If no option set, fallback is "/".
 
 All variables are bind to __window__
 

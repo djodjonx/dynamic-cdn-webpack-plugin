@@ -26,11 +26,19 @@ class WebpackDynamicCdnPlugin {
     return this._mapTags[this._currentVersion].head
   }
 
+  formatURL (url) {
+    if (url.indexOf('/') === 0) {
+      // remove first '/' of url
+      return url.slice(1)
+    }
+    return url
+  }
+
   generateHeadTag (tagArray) {
     let tags = []
     tagArray.forEach((tagObject) => {
       const tag = {}
-      tag.href = tagObject.attributes.href
+      tag.href = this.formatURL(tagObject.attributes.href)
       if (tagObject.attributes.rel) {
         tag.rel = tagObject.attributes.rel
       }
@@ -42,7 +50,7 @@ class WebpackDynamicCdnPlugin {
 
     const renderHeadFunction =`
     (function() {
-      var publicPath = window.${this.windowVar} || '';
+      var publicPath = window.${this.windowVar} || '/';
       /** set webpack public path */
       __webpack_public_path__ = publicPath;
       var tags = [${tags}];
@@ -73,7 +81,7 @@ class WebpackDynamicCdnPlugin {
 
     const renderBodyFunction =`
     (function() {
-      var publicPath = window.${this.windowVar} || '';
+      var publicPath = window.${this.windowVar} || '/';
       var tags = [${tags}];
       var bodyTag = document.body;
       tags.forEach((tag) => {
@@ -117,13 +125,13 @@ class WebpackDynamicCdnPlugin {
   plugToHook(compilation) {
     if (compilation.hooks.htmlWebpackPluginAlterAssetTags) {
       compilation.hooks.htmlWebpackPluginAlterAssetTags.tapAsync('DynamicCdnPluginAlterAssets', (data, cb) => this.processingAlterTags(data, cb))
-    } else {
+    } else if (HtmlWebpackPlugin.getHooks) {
       // HtmlWebPackPlugin 4.x
-      if (HtmlWebpackPlugin.getHooks) {
-        this.currentVersion = 4
-        let hooks = HtmlWebpackPlugin.getHooks(compilation);
-        hooks.alterAssetTags.tapAsync('DynamicCdnPluginAlterAssets', (data, cb) => this.processingAlterTags(data, cb))
-      }
+      this.currentVersion = 4
+      let hooks = HtmlWebpackPlugin.getHooks(compilation);
+      hooks.alterAssetTags.tapAsync('DynamicCdnPluginAlterAssets', (data, cb) => this.processingAlterTags(data, cb))
+    } else {
+      this.compilation.errors.push('HtmlWebpackPlugin not found! \n This plugin work only with HtmlWebpackPlugin')
     }
   }
 
