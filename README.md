@@ -59,6 +59,8 @@ If no option set, fallback is "/".
 
 All variables are bind to __window__
 
+The global variable `__webpack_public_path__`, used by webpack for load assets, be set by the plugin with your value defined on window too.
+
 ### On server side
 
 This is only an example for commons use cases, please refer to the __server / proxy__ documentation to be able to perform this action.
