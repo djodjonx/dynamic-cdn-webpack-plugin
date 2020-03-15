@@ -131,7 +131,7 @@ class WebpackDynamicCdnPlugin {
       let hooks = HtmlWebpackPlugin.getHooks(compilation);
       hooks.alterAssetTags.tapAsync('DynamicCdnPluginAlterAssets', (data, cb) => this.processingAlterTags(data, cb))
     } else {
-      this.compilation.errors.push('HtmlWebpackPlugin not found! \n This plugin work only with HtmlWebpackPlugin')
+      compilation.errors.push('HtmlWebpackPlugin not found! \n This plugin work only with HtmlWebpackPlugin')
     }
   }
 
