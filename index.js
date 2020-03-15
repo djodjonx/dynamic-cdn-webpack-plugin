@@ -75,7 +75,7 @@ class WebpackDynamicCdnPlugin {
     let tags = []
     tagArray.forEach((tagObject) => {
       const tag = {}
-      tag.src = tagObject.attributes.src
+      tag.src =  this.formatURL(tagObject.attributes.src)
       tags.push(JSON.stringify(tag))
     })
 

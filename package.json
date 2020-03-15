@@ -1,6 +1,6 @@
 {
   "name": "webpack-dynamic-cdn-plugin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Plugin for rewrite, at runtime, webpack assets url for loading application from CDN dynamicaly",
   "main": "index.js",
   "scripts": {
